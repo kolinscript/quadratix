@@ -1,1 +1,1 @@
-web: sh -c 'cd ./core/api/ && node app.js'
+web: node app.js
