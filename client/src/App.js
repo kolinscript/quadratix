@@ -4,33 +4,45 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: {a: null, b: null, c: null}};
+    this.state = {
+      a: '',
+      b: '',
+      c: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState( {
+      [name]: value
+    }, () => {
+      console.log(this.state);
+    });
   }
 
   handleSubmit(event) {
-    alert('Отправленное имя: ' + this.state.value);
     event.preventDefault();
-    fetch('/calculate/', {
+    const data = {
+      multipliers: {
+        a: this.state.a,
+        b: this.state.b,
+        c: this.state.c
+      }
+    };
+    console.log(data);
+    fetch('/calculate', {
       method: 'POST',
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: 'application/json', 'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        multipliers: {
-          a: this.state.value.a,
-          b: this.state.value.b,
-          c: this.state.value.c
-        }
-      }),
-    }).then(res => console.log(res.json()));
+      body: JSON.stringify(data),
+    }).then(res => res.json().then((data) => {
+      console.log(data);
+    }));
   }
 
   render() {
@@ -38,15 +50,15 @@ class App extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             A:
-            <input type="text" value={this.state.value.a} onChange={this.handleChange} />
+            <input type="text" name="a" value={this.state.a} onChange={this.handleChange} />
           </label>
           <label>
             B:
-            <input type="text" value={this.state.value.b} onChange={this.handleChange} />
+            <input type="text" name="b" value={this.state.b} onChange={this.handleChange} />
           </label>
           <label>
             C:
-            <input type="text" value={this.state.value.c} onChange={this.handleChange} />
+            <input type="text" name="c" value={this.state.c} onChange={this.handleChange} />
           </label>
           <input type="submit" value="Отправить" />
         </form>

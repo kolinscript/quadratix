@@ -20,14 +20,13 @@ app.post('/calculate', (req, res, next) => {
 
     if( d < 0) {
         console.log('The quadratic equation has no real roots');
-        return res.status(400).send({ error: 'the quadratic equation has no real roots'});
+        return res.status(200).send({ error: 'the quadratic equation has no real roots'});
     } else {
         answer.x1 = (-b+Math.sqrt(d))/(2*a).toFixed(4);
         answer.x2 = (-b-Math.sqrt(d))/(2*a).toFixed(4);
+        console.log('Founded roots:', answer);
+        return res.status(200).send(answer);
     }
-
-    console.log('Founded roots:', answer);
-    return res.status(200).send(answer);
 });
 
 app.get('*', (req, res) => {
