@@ -7,7 +7,8 @@ class App extends Component {
     this.state = {
       a: '',
       b: '',
-      c: ''
+      c: '',
+      result: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -42,26 +43,37 @@ class App extends Component {
       body: JSON.stringify(data),
     }).then(res => res.json().then((data) => {
       console.log(data);
+      this.setState(prevState => ({
+        result: data
+      }), () => {
+        console.log(this.state);
+      });
     }));
   }
 
   render() {
     return (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            A:
-            <input type="text" name="a" value={this.state.a} onChange={this.handleChange} />
-          </label>
-          <label>
-            B:
-            <input type="text" name="b" value={this.state.b} onChange={this.handleChange} />
-          </label>
-          <label>
-            C:
-            <input type="text" name="c" value={this.state.c} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Отправить" />
-        </form>
+        <div>
+          <h1>Enter the multipliers at the form below</h1>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              A:
+              <input type="text" name="a" value={this.state.a} onChange={this.handleChange} />
+            </label>
+            <label>
+              B:
+              <input type="text" name="b" value={this.state.b} onChange={this.handleChange} />
+            </label>
+            <label>
+              C:
+              <input type="text" name="c" value={this.state.c} onChange={this.handleChange} />
+            </label>
+            <input type="submit" value="Отправить" />
+          </form>
+          <div>
+            <h2>Result: {this.state.result.error ? <span>{this.state.result.error}</span> : <span>{this.state.result.x1} {this.state.result.x2}</span>}</h2>
+          </div>
+        </div>
     );
   }
 }
