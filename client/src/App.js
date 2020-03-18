@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   constructor(props) {
@@ -53,25 +53,32 @@ class App extends Component {
 
   render() {
     return (
-        <div>
-          <h1>Enter the multipliers at the form below</h1>
+        <div className={'app'}>
+          <h1 className={'title'}>QUADRATIX</h1>
+          <h2>Quadratic equation calculator</h2>
+          <h3>Enter the multipliers at the form below</h3>
           <form onSubmit={this.handleSubmit}>
-            <label>
-              A:
+            <div className={'input'}>
               <input type="text" name="a" value={this.state.a} onChange={this.handleChange} />
-            </label>
-            <label>
-              B:
+            </div>
+            <span>x</span>
+            <span className={'exponent'}>2</span>
+            <span>+</span>
+            <div className={'input'}>
               <input type="text" name="b" value={this.state.b} onChange={this.handleChange} />
-            </label>
-            <label>
-              C:
+            </div>
+            <span>x</span>
+            <span>+</span>
+            <div className={'input'}>
               <input type="text" name="c" value={this.state.c} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Отправить" />
+            </div>
+            <span>= 0</span>
+            <div className={'btn'}>
+              <input type="submit" value="Вычислить" />
+            </div>
           </form>
           <div>
-            <h2>Result: {this.state.result.error ? <span>{this.state.result.error}</span> : <span>{this.state.result.x1} {this.state.result.x2}</span>}</h2>
+            <h3>Result: {this.state.result.error ? <span>{this.state.result.error}</span> : <span>{this.state.result.x1} {this.state.result.x2}</span>}</h3>
           </div>
         </div>
     );

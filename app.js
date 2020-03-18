@@ -23,8 +23,8 @@ app.post('/calculate', (req, res, next) => {
         console.log('The quadratic equation has no real roots');
         return res.status(200).send({ error: 'the quadratic equation has no real roots'});
     } else {
-        answer.x1 = (-b+Math.sqrt(d))/(2*a).toFixed(4);
-        answer.x2 = (-b-Math.sqrt(d))/(2*a).toFixed(4);
+        answer.x1 = ((-b+Math.sqrt(d))/(2*a)).toFixed(2);
+        answer.x2 = ((-b-Math.sqrt(d))/(2*a)).toFixed(2);
         console.log('Founded roots:', answer);
         return res.status(200).send(answer);
     }
