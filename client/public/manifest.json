@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
+  "short_name": "Quadratix",
   "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64",
       "type": "image/x-icon"
     },
     {
@@ -18,8 +18,11 @@
       "sizes": "512x512"
     }
   ],
+  "serviceworker": {
+    "src": "./service-worker.js"
+  },
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#E6F0F9",
+  "background_color": "#E6F0F9"
 }

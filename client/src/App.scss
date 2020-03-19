@@ -1,22 +1,42 @@
 .app {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   h1.title {
     width: 100%;
     margin: 0;
-    padding: 40px 0;
+    padding: 40px 0 10px;
     font: 400 62px/64px 'Orbitron', sans-serif;
     text-align: center;
-    color: #31456A;
+    span {
+      display: inline-block;
+      animation: x-spin infinite 10s linear;
+    }
   }
 
-  h2, h3 {
+  h2.subtitle {
+    width: 100%;
+    margin: 0;
+    padding: 20px 0;
+    font: 500 32px/34px 'Roboto', sans-serif;
+    text-align: center;
+  }
+
+  .text {
+    display: inline-block;
     width: 100%;
     text-align: center;
+    font: 500 18px/20px 'Roboto', sans-serif;
   }
 
   form {
     display: flex;
     justify-content: center;
-    padding: 20px 0;
+    padding: 40px 0 20px;
     span {
       display: flex;
       justify-content: center;
@@ -35,9 +55,10 @@
         border: none;
         outline: none;
         height: 60px;
-        width: 60px;
+        width: 80px;
         background: #E3EDF7;
         padding: 10px;
+        -webkit-appearance: none;
         box-shadow: inset 2px 2px 5px rgba(136, 165, 191, 0.38), inset -3px -3px 7px #FFFFFF;
         border-radius: 16px;
         font: italic 500 32px/34px 'Playfair Display', serif;
@@ -45,58 +66,162 @@
         color: #31456A;
         //border: 1px solid rgba(136, 165, 191, 0.38);
       }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
       &:first-child {
         margin-left: 0;
       }
     }
     .btn {
       margin-left: 40px;
-      input {
+      button {
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
         border: none;
         outline: none;
         height: 60px;
-        min-width: 180px;
+        width: 180px;
         background: #E3EDF7;
+        -webkit-appearance: none;
         box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48), -4px -2px 16px #FFFFFF;
         border-radius: 16px;
         font: 500 18px/20px 'Roboto', sans-serif;
         color: #31456A;
       }
+      &:hover {
+        button {
+          box-shadow: inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;
+        }
+      }
+    }
+  }
+
+  .result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      .root {
+        margin: 0 10px;
+        font-size: 32px;
+        font-weight: 900;
+      }
+    }
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background: #314569cc;
+    .social {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .link {
+        width: 22px;
+        height: 22px;
+        margin-right: 40px;
+        a {
+          display: block;
+          cursor: pointer;
+          width: 100%;
+          height: 100%;
+          &.github {
+            background: url("img/github.svg") no-repeat;
+            background-size: cover;
+          }
+          &.telega {
+            background: url("img/telega.svg") no-repeat;
+            background-size: cover;
+          }
+          &.vk {
+            background: url("img/vk.svg") no-repeat;
+            background-size: cover;
+          }
+          &.instagram {
+            background: url("img/instagram.svg") no-repeat;
+            background-size: cover;
+          }
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
 }
 
-//.App-logo {
-//  height: 40vmin;
-//  pointer-events: none;
-//}
-//
-//@media (prefers-reduced-motion: no-preference) {
-//  .App-logo {
-//    animation: App-logo-spin infinite 20s linear;
-//  }
-//}
-//
-//.App-header {
-//  background-color: #282c34;
-//  min-height: 100vh;
-//  display: flex;
-//  flex-direction: column;
-//  align-items: center;
-//  justify-content: center;
-//  font-size: calc(10px + 2vmin);
-//  color: white;
-//}
-//
-//.App-link {
-//  color: #61dafb;
-//}
-//
-//@keyframes App-logo-spin {
-//  from {
-//    transform: rotate(0deg);
-//  }
-//  to {
-//    transform: rotate(360deg);
-//  }
-//}
+@media screen and (max-width: 750px) {
+ .app {
+   h1.title {
+     font: 400 40px/42px 'Orbitron', sans-serif;
+   }
+
+   h2.subtitle {
+     font: 500 22px/24px 'Roboto', sans-serif;
+   }
+
+   .text {
+     font: 500 16px/18px 'Roboto', sans-serif;
+   }
+
+   form {
+     span {
+       margin-right: 5px;
+       font: italic 500 18px/20px 'Playfair Display', serif;
+     }
+     .input {
+       margin-right: 5px;
+       input {
+         height: 40px;
+         width: 50px;
+         padding: 5px;
+         border-radius: 8px;
+         font: 500 14px/16px 'Roboto', sans-serif;
+       }
+     }
+     .btn {
+       margin-left: 10px;
+       button {
+         height: 40px;
+         width: 80px;
+         border-radius: 8px;
+         font: 500 12px/14px 'Roboto', sans-serif;
+       }
+     }
+   }
+
+   .result {
+     margin-top: 10px;
+     font-size: 14px;
+     span {
+       margin-right: 5px;
+       .root {
+         margin: 0 5px;
+         font-size: 22px;
+       }
+     }
+   }
+ }
+}
+
+@keyframes x-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

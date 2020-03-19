@@ -22,11 +22,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font: 400 18px/20px 'Roboto', sans-serif;
+  font: 500 18px/20px 'Roboto', sans-serif;
   color: #31456A;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  height: 100%;
 }
